@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!-- saved from url=(0185)https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity -->
+<html lang="ru"><span id="iproyal@@extension@@state" data-webrtc-protection="false" data-proxy-connected="false"></span><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Балтийский терруар | Премиум винодельня Калининграда</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #e8e5d9;
+            background: #0a0e27;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e8e5d9;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-invest {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f0d587 100%);
+            color: #0a0e27;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-invest:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(22, 33, 62, 0.7) 50%, rgba(15, 52, 96, 0.7) 100%),
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%25" style="stop-color:%23456983;stop-opacity:0.8"/><stop offset="100%25" style="stop-color:%23283d56;stop-opacity:1"/></linearGradient></defs><rect width="1200" height="800" fill="%230a0e27"/><rect y="400" width="1200" height="400" fill="url(%23sea)"/><path d="M 0 350 Q 300 330 600 350 T 1200 350 L 1200 800 L 0 800 Z" fill="%23364a62" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 60px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            animation: shimmer 8s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { left: -100%; }
+            50% { left: 0; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #d4af37;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #e8e5d9;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f0d587 100%);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(135deg, rgba(22, 33, 62, 0.5) 0%, rgba(15, 52, 96, 0.3) 100%);
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #d4af37;
+            position: relative;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37 0%, transparent 100%);
+            margin: 1.5rem auto 0;
+        }
+
+        .text-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .text-content p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            color: #e8e5d9;
+        }
+
+        /* GALLERY */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 450px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.8);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+            padding: 2.5rem;
+            color: white;
+            transform: translateY(30px);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #d4af37;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.95rem;
+            color: #e8e5d9;
+        }
+
+        /* FEATURES */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.1) 100%);
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #d4af37;
+        }
+
+        .feature-card p {
+            color: #e8e5d9;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* CONTACTS */
+        .contacts-section {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(22, 33, 62, 0.5) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contacts-section p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            color: #e8e5d9;
+        }
+
+        .contact-item {
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-item strong {
+            color: #d4af37;
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #0a0e27 0%, #16213e 100%);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #e8e5d9;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .section-title { font-size: 2.5rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 1.5rem; font-size: 0.85rem; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .nav-links { display: none; }
+            .section-title { font-size: 2.2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .contacts-section { padding: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 1rem 0; }
+            .logo { font-size: 1.4rem; letter-spacing: 1px; }
+            .nav-links { display: none; }
+            .btn-invest { padding: 0.6rem 1.5rem; font-size: 0.85rem; }
+            .hero { height: 70vh; margin-top: 50px; }
+            .hero h1 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1rem; }
+            .hero p { font-size: 0.95rem; }
+            .cta-button { padding: 0.8rem 2rem; font-size: 0.95rem; }
+            .section-title { font-size: 1.8rem; }
+            .section-title::after { width: 80px; }
+            .gallery-item { height: 350px; }
+            .text-content p { font-size: 1rem; }
+            .feature-card { padding: 1.5rem; }
+            .feature-icon { font-size: 2.5rem; }
+            .feature-card h3 { font-size: 1.1rem; }
+            .feature-card p { font-size: 0.85rem; }
+            .contacts-section { padding: 1.5rem; }
+            .contact-item { font-size: 0.95rem; }
+            section { padding: 60px 0; }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity#" class="logo">⧗ БАЛТИЙСКИЙ ТЕРРУАР</a>
+            <ul class="nav-links">
+                <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity#terroir">О ПРОЕКТЕ</a></li>
+                <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity#visuals">ВИЗУАЛИЗАЦИЯ</a></li>
+                <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity#features">ВОЗМОЖНОСТИ</a></li>
+                <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity#contacts">КОНТАКТЫ</a></li>
+            </ul>
+            <button class="btn-invest">ИНВЕСТИРОВАТЬ</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>БАЛТИЙСКИЙ ТЕРРУАР</h1>
+            <p class="subtitle">Виноделие на гейотермической параллели истории</p>
+            <p>На одной широте с легендарной долиной Мозель.<br>
+            В климате, напоминающем Шампань эпохи Наполеона.<br>
+            На краю морского ветра и янтарного берега.</p>
+            <button class="cta-button" onclick="document.getElementById(&#39;contacts&#39;).scrollIntoView({behavior: &#39;smooth&#39;})">
+                СТАТЬ ИНВЕСТОРОМ
+            </button>
+        </div>
+    </section>
+
+    <section id="terroir">
+        <div class="container">
+            <h2 class="section-title">ПОЧЕМУ БАЛТИЙСК?</h2>
+            <div class="text-content">
+                <p><strong>Балтийск (54°39' северной широты)</strong> — самая западная точка России, расположенная на той же географической широте, что и легендарная долина Мозель в Германии, где производят одни из самых утонченных белых вин в мире.</p>
+                <p>Климат Калининградской области в исторических параметрах соответствует климату Шампани <strong>середины XX века</strong> — эпохе классического стиля: свежести, деликатности и минеральности.</p>
+                <p>Балтийское море дарует нам <strong>прохладные ночи</strong>, продлевая период созревания ягод. Климатические циклоны формируют уникальный микроклимат. <strong>Это не тропический шум винодельни, а симфония северных широт.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="visuals">
+        <div class="container">
+            <h2 class="section-title">БУДУЩЕЕ ПРОЕКТА</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/2b805ad2-e94d-44fe-b5ec-5d823b23f66d.png" alt="Винодельня">
+                    <div class="gallery-overlay">
+                        <h3>Винодельня в балтийском климате</h3>
+                        <p>Прусский стиль архитектуры, вид на залив сквозь туман</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/79eb8fce-6b7c-4ddc-aaaa-51b82ee1ead8.png" alt="Эко-кластер">
+                    <div class="gallery-overlay">
+                        <h3>Эко-туристический кластер</h3>
+                        <p>Отель и лоджи в стиле Балтики с видом на виноградники</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">ЭКО-КЛАСТЕР "БАЛТИЙСКИЙ ТЕРРУАР"</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🍇</div>
+                    <h3>Виноградники</h3>
+                    <p>Рислинг, Пино Гри, Мюллер-Тургау для белых вин; Пино Нуар, Цвайгельт для красных</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍾</div>
+                    <h3>Погреба</h3>
+                    <p>Вырезаны в янтарных слоях побережья. Традиционные методы винификации</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏨</div>
+                    <h3>Гостевой комплекс</h3>
+                    <p>Люкс-номера с видом на Балтику. Дегустационные залы в стиле château</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍽️</div>
+                    <h3>Эко-ресторан</h3>
+                    <p>Меню на локальных продуктах и собственных винах</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚴</div>
+                    <h3>Эко-туры</h3>
+                    <p>Велотуры по виноградникам, прогулки по янтарному берегу</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Винная школа</h3>
+                    <p>Образовательные программы и мастер-классы от сомелье</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts">
+        <div class="container">
+            <h2 class="section-title">ИНВЕСТИРУЕМ В ТЕРРУАР</h2>
+            <div class="contacts-section">
+                <p>Мы приглашаем вас создать новую главу в истории российского виноделия.</p>
+                <p><strong>Инвестируйте в наследие, которое будет вкушаться поколениями.</strong></p>
+                <div class="contact-item">
+                    <strong>📧 Email:</strong><br>
+                    <a href="mailto:zinovievilya@gmail.com" style="color: #d4af37; text-decoration: none;">zinovievilya@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>📱 Телефон:</strong><br>
+                    <a href="tel:+79933551872" style="color: #d4af37; text-decoration: none;">+7 (993) 355-18-72</a>
+                </div>
+                <div class="contact-item">
+                    <strong>💬 Telegram:</strong><br>
+                    <a href="https://t.me/zinovilya" style="color: #d4af37; text-decoration: none;">@zinovilya</a>
+                </div>
+                <button class="cta-button" style="margin-top: 2rem;">НАПИСАТЬ ПИСЬМО</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Балтийский терруар. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({behavior: 'smooth', block: 'start'});
+            });
+        });
+        document.querySelectorAll('.btn-invest').forEach(btn => {
+            btn.addEventListener('click', function() { window.location.href = 'https://t.me/zinovilya'; });
+        });
+        document.querySelectorAll('.cta-button').forEach(btn => {
+            btn.addEventListener('click', function() { window.location.href = 'https://t.me/zinovilya'; });
+        });
+    </script>
+
+
+</body></html>

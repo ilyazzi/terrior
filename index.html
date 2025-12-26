@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0185)https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity -->
-<html lang="ru"><span id="iproyal@@extension@@state" data-webrtc-protection="false" data-proxy-connected="false"></span><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Балтийский терруар | Премиум винодельня Калининграда</title>
     <style>
@@ -101,11 +101,12 @@
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
 
-        /* HERO */
+        /* HERO - ИЗМЕНЕНИЯ ЗДЕСЬ */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(22, 33, 62, 0.7) 50%, rgba(15, 52, 96, 0.7) 100%),
-                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%25" style="stop-color:%23456983;stop-opacity:0.8"/><stop offset="100%25" style="stop-color:%23283d56;stop-opacity:1"/></linearGradient></defs><rect width="1200" height="800" fill="%230a0e27"/><rect y="400" width="1200" height="400" fill="url(%23sea)"/><path d="M 0 350 Q 300 330 600 350 T 1200 350 L 1200 800 L 0 800 Z" fill="%23364a62" opacity="0.4"/></svg>');
+            /* Фото побережья Балтики на фоне */
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.5) 0%, rgba(22, 33, 62, 0.5) 100%),
+                        url('https://images.unsplash.com/photo-1505832018823-50331d70d237?q=80&w=1600&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -139,6 +140,14 @@
             z-index: 2;
             max-width: 900px;
             animation: fadeInUp 1.2s ease-out;
+            
+            /* Полупрозрачная подложка для текста */
+            background: rgba(10, 14, 39, 0.75); 
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         }
 
         .hero h1 {
@@ -147,12 +156,13 @@
             letter-spacing: 3px;
             font-weight: 700;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            color: #d4af37;
         }
 
         .hero .subtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            color: #d4af37;
+            color: #f0d587;
             font-weight: 300;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
@@ -294,7 +304,7 @@
             color: #e8e5d9;
         }
 
-        /* FEATURES */
+        /* FEATURES - ИЗМЕНЕНИЯ ЗДЕСЬ (Замена эмодзи на логотипы) */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -320,8 +330,20 @@
         }
 
         .feature-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            /* Контейнер для иконки */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            height: 80px;
+        }
+
+        .feature-icon img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            /* Золотой фильтр для иконок */
+            filter: invert(83%) sepia(31%) saturate(979%) hue-rotate(359deg) brightness(92%) contrast(89%);
         }
 
         .feature-card h3 {
@@ -392,6 +414,7 @@
             .section-title { font-size: 2.2rem; }
             .gallery-grid { grid-template-columns: 1fr; }
             .contacts-section { padding: 2rem; }
+            .hero-content { padding: 2rem; }
         }
 
         @media (max-width: 480px) {
@@ -409,7 +432,7 @@
             .gallery-item { height: 350px; }
             .text-content p { font-size: 1rem; }
             .feature-card { padding: 1.5rem; }
-            .feature-icon { font-size: 2.5rem; }
+            .feature-icon img { width: 60px; height: 60px; }
             .feature-card h3 { font-size: 1.1rem; }
             .feature-card p { font-size: 0.85rem; }
             .contacts-section { padding: 1.5rem; }
@@ -426,14 +449,13 @@
 <body>
     <header>
         <nav class="container">
-            <a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity#" class="logo">⧗ БАЛТИЙСКИЙ ТЕРРУАР</a>
+            <a href="#" class="logo">⧗ БАЛТИЙСКИЙ ТЕРРУАР</a>
             <ul class="nav-links">
-                <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity#terroir">О ПРОЕКТЕ</a></li>
-                <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity#visuals">ВИЗУАЛИЗАЦИЯ</a></li>
-                <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity#features">ВОЗМОЖНОСТИ</a></li>
-                <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/a033a4d5bfd8a1f0cd7ea073e82e11d1/3b74de92-2735-422a-9d68-72812f583854/canvas-app/index.html?utm_source=perplexity#contacts">КОНТАКТЫ</a></li>
+                <li><a href="#terroir">О ПРОЕКТЕ</a></li>
+                <li><a href="#visuals">ВИЗУАЛИЗАЦИЯ</a></li>
+                <li><a href="#features">ВОЗМОЖНОСТИ</a></li>
+                <li><a href="#contacts">КОНТАКТЫ</a></li>
             </ul>
-          
         </nav>
     </header>
 
@@ -444,7 +466,6 @@
             <p>На одной широте с легендарной долиной Мозель.<br>
             В климате, напоминающем Шампань эпохи Наполеона.<br>
             На краю морского ветра и янтарного берега.</p>
-           
         </div>
     </section>
 
@@ -464,14 +485,14 @@
             <h2 class="section-title">БУДУЩЕЕ ПРОЕКТА</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/2b805ad2-e94d-44fe-b5ec-5d823b23f66d.png" alt="Винодельня">
+                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/2b805ad2-e94d-44fe-b5ec-5d823b23f66d.png" onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=1000&auto=format&fit=crop'" alt="Винодельня">
                     <div class="gallery-overlay">
                         <h3>Винодельня в балтийском климате</h3>
                         <p>Прусский стиль архитектуры, вид на залив сквозь туман</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/79eb8fce-6b7c-4ddc-aaaa-51b82ee1ead8.png" alt="Эко-кластер">
+                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/79eb8fce-6b7c-4ddc-aaaa-51b82ee1ead8.png" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1000&auto=format&fit=crop'" alt="Эко-кластер">
                     <div class="gallery-overlay">
                         <h3>Эко-туристический кластер</h3>
                         <p>Отель и лоджи в стиле Балтики с видом на виноградники</p>
@@ -486,17 +507,23 @@
             <h2 class="section-title">ЭКО-КЛАСТЕР "БАЛТИЙСКИЙ ТЕРРУАР"</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🍇</div>
+                    <div class="feature-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/765/765616.png" alt="Виноград">
+                    </div>
                     <h3>Виноградники</h3>
                     <p>Рислинг, Пино Гри, Мюллер-Тургау для белых вин; Пино Нуар, Цвайгельт для красных</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🍾</div>
+                    <div class="feature-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3055/3055680.png" alt="Погреба">
+                    </div>
                     <h3>Погреба</h3>
                     <p>Вырезаны в янтарных слоях побережья. Традиционные методы винификации</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🏨</div>
+                    <div class="feature-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965675.png" alt="Гостевой комплекс">
+                    </div>
                     <h3>Гостевой комплекс</h3>
                     <p>Люкс-номера с видом на Балтику. Дегустационные залы в стиле château</p>
                 </div>
@@ -548,6 +575,5 @@
             btn.addEventListener('click', function() { window.location.href = 'https://t.me/zinovilya'; });
         });
     </script>
-
-
-</body></html>
+</body>
+</html>

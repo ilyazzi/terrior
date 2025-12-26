@@ -85,30 +85,18 @@
             width: 100%;
         }
 
-        .btn-invest {
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #d4af37 0%, #f0d587 100%);
-            color: #0a0e27;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn-invest:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-        }
-
-        /* HERO - ИЗМЕНЕНИЯ ЗДЕСЬ */
+        /* HERO - ИСПРАВЛЕННАЯ СЕКЦИЯ */
         .hero {
             height: 100vh;
-            /* Фото побережья Балтики на фоне */
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.5) 0%, rgba(22, 33, 62, 0.5) 100%),
-                        url('https://images.unsplash.com/photo-1505832018823-50331d70d237?q=80&w=1600&auto=format&fit=crop');
+            /* Используем прямую ссылку на фото моря + наложение темного градиента для читаемости */
+            background-image: 
+                linear-gradient(rgba(10, 14, 39, 0.5), rgba(10, 14, 39, 0.5)),
+                url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-4.0.3&auto=format&fit=crop&w=2574&q=80');
+            
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+            
             display: flex;
             align-items: center;
             justify-content: center;
@@ -116,7 +104,6 @@
             color: white;
             position: relative;
             margin-top: 60px;
-            overflow: hidden;
         }
 
         .hero::before {
@@ -128,6 +115,7 @@
             height: 100%;
             background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
             animation: shimmer 8s infinite;
+            pointer-events: none;
         }
 
         @keyframes shimmer {
@@ -141,9 +129,9 @@
             max-width: 900px;
             animation: fadeInUp 1.2s ease-out;
             
-            /* Полупрозрачная подложка для текста */
-            background: rgba(10, 14, 39, 0.75); 
-            backdrop-filter: blur(10px);
+            /* Стили плашки с текстом */
+            background: rgba(10, 14, 39, 0.7); 
+            backdrop-filter: blur(8px);
             padding: 3rem;
             border-radius: 20px;
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -175,26 +163,6 @@
             line-height: 1.8;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, #d4af37 0%, #f0d587 100%);
-            color: #0a0e27;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
-        }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -222,7 +190,6 @@
             margin-bottom: 3rem;
             color: #d4af37;
             position: relative;
-            animation: slideIn 0.8s ease-out;
         }
 
         .section-title::after {
@@ -304,7 +271,7 @@
             color: #e8e5d9;
         }
 
-        /* FEATURES - ИЗМЕНЕНИЯ ЗДЕСЬ (Замена эмодзи на логотипы) */
+        /* FEATURES (LOGOS) */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -330,7 +297,6 @@
         }
 
         .feature-icon {
-            /* Контейнер для иконки */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -421,12 +387,10 @@
             header { padding: 1rem 0; }
             .logo { font-size: 1.4rem; letter-spacing: 1px; }
             .nav-links { display: none; }
-            .btn-invest { padding: 0.6rem 1.5rem; font-size: 0.85rem; }
             .hero { height: 70vh; margin-top: 50px; }
             .hero h1 { font-size: 2rem; }
             .hero .subtitle { font-size: 1rem; }
             .hero p { font-size: 0.95rem; }
-            .cta-button { padding: 0.8rem 2rem; font-size: 0.95rem; }
             .section-title { font-size: 1.8rem; }
             .section-title::after { width: 80px; }
             .gallery-item { height: 350px; }
@@ -438,11 +402,6 @@
             .contacts-section { padding: 1.5rem; }
             .contact-item { font-size: 0.95rem; }
             section { padding: 60px 0; }
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
         }
     </style>
 </head>
@@ -462,7 +421,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>БАЛТИЙСКИЙ ТЕРРУАР</h1>
-            <p class="subtitle">Виноделие на гейотермической параллели истории</p>
+            <p class="subtitle">Виноделие на геотермической параллели истории</p>
             <p>На одной широте с легендарной долиной Мозель.<br>
             В климате, напоминающем Шампань эпохи Наполеона.<br>
             На краю морского ветра и янтарного берега.</p>
@@ -485,14 +444,14 @@
             <h2 class="section-title">БУДУЩЕЕ ПРОЕКТА</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/2b805ad2-e94d-44fe-b5ec-5d823b23f66d.png" onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=1000&auto=format&fit=crop'" alt="Винодельня">
+                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/2b805ad2-e94d-44fe-b5ec-5d823b23f66d.png" onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80'" alt="Винодельня">
                     <div class="gallery-overlay">
                         <h3>Винодельня в балтийском климате</h3>
                         <p>Прусский стиль архитектуры, вид на залив сквозь туман</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/79eb8fce-6b7c-4ddc-aaaa-51b82ee1ead8.png" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1000&auto=format&fit=crop'" alt="Эко-кластер">
+                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/79eb8fce-6b7c-4ddc-aaaa-51b82ee1ead8.png" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80'" alt="Эко-кластер">
                     <div class="gallery-overlay">
                         <h3>Эко-туристический кластер</h3>
                         <p>Отель и лоджи в стиле Балтики с видом на виноградники</p>
@@ -550,7 +509,7 @@
                     <strong>💬 Telegram:</strong><br>
                     <a href="https://t.me/zinovilya" style="color: #d4af37; text-decoration: none;">@zinovilya</a>
                 </div>
-                
+            </div>
         </div>
     </section>
 
@@ -567,12 +526,6 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) target.scrollIntoView({behavior: 'smooth', block: 'start'});
             });
-        });
-        document.querySelectorAll('.btn-invest').forEach(btn => {
-            btn.addEventListener('click', function() { window.location.href = 'https://t.me/zinovilya'; });
-        });
-        document.querySelectorAll('.cta-button').forEach(btn => {
-            btn.addEventListener('click', function() { window.location.href = 'https://t.me/zinovilya'; });
         });
     </script>
 </body>

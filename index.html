@@ -86,17 +86,13 @@
         }
 
         /* HERO - ИСПРАВЛЕННАЯ СЕКЦИЯ */
+         /* HERO */
         .hero {
             height: 100vh;
-            /* Используем прямую ссылку на фото моря + наложение темного градиента для читаемости */
-            background-image: 
-                linear-gradient(rgba(10, 14, 39, 0.5), rgba(10, 14, 39, 0.5)),
-                <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/2b805ad2-e94d-44fe-b5ec-5d823b23f66d.png" onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80'>;
-            
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(22, 33, 62, 0.7) 50%, rgba(15, 52, 96, 0.7) 100%),
+                        url('Sea_bg.png');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            
             display: flex;
             align-items: center;
             justify-content: center;
@@ -104,6 +100,7 @@
             color: white;
             position: relative;
             margin-top: 60px;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -115,7 +112,6 @@
             height: 100%;
             background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
             animation: shimmer 8s infinite;
-            pointer-events: none;
         }
 
         @keyframes shimmer {
@@ -128,14 +124,6 @@
             z-index: 2;
             max-width: 900px;
             animation: fadeInUp 1.2s ease-out;
-            
-            /* Стили плашки с текстом */
-            background: rgba(10, 14, 39, 0.7); 
-            backdrop-filter: blur(8px);
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         }
 
         .hero h1 {
@@ -144,13 +132,12 @@
             letter-spacing: 3px;
             font-weight: 700;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            color: #d4af37;
         }
 
         .hero .subtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            color: #f0d587;
+            color: #d4af37;
             font-weight: 300;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
@@ -161,6 +148,26 @@
             margin: 0 auto 3rem;
             color: #e8e5d9;
             line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f0d587 100%);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
         }
 
         @keyframes fadeInUp {

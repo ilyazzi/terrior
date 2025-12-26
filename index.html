@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Балтийский терруар | Премиум винодельня Калининграда</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.8;
@@ -14,36 +22,81 @@
             background: #0a0e27;
             overflow-x: hidden;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
         /* HEADER */
         header {
-            position: fixed; top: 0; width: 100%;
+            position: fixed;
+            top: 0;
+            width: 100%;
             background: rgba(10, 14, 39, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             padding: 1.5rem 0;
         }
-        nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo {
-            font-size: 1.8rem; font-weight: 700; color: #d4af37;
-            letter-spacing: 2px; text-decoration: none;
-        }
-        .nav-links { display: flex; list-style: none; gap: 3rem; align-items: center; }
-        .nav-links a {
-            color: #e8e5d9; text-decoration: none; font-size: 0.95rem;
-            transition: color 0.3s ease; position: relative;
-        }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -5px; left: 0;
-            width: 0; height: 2px; background: #d4af37; transition: width 0.3s ease;
-        }
-        .nav-links a:hover::after { width: 100%; }
 
-        /* HERO - ОБНОВЛЕНО */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e8e5d9;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO - ИСПРАВЛЕННАЯ СЕКЦИЯ */
         .hero {
             height: 100vh;
+            /* Используем прямую ссылку на фото моря + наложение темного градиента для читаемости */
+            background-image: 
+                linear-gradient(rgba(10, 14, 39, 0.5), rgba(10, 14, 39, 0.5)),
+                url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-4.0.3&auto=format&fit=crop&w=2574&q=80');
+            
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
             display: flex;
             align-items: center;
             justify-content: center;
@@ -51,18 +104,23 @@
             color: white;
             position: relative;
             margin-top: 60px;
-            
-            /* ФОНОВАЯ КАРТИНКА */
-            /* Сначала идет градиент (затемнение), потом картинка */
-            background: linear-gradient(rgba(10, 14, 39, 0.4), rgba(10, 14, 39, 0.6)), 
-                        url('sea.jpg'); /* Ссылка на локальный файл sea.jpg */
-            
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            
-            /* Если картинки нет, будет красивый синий градиент */
-            background-color: #0a0e27; 
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            animation: shimmer 8s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { left: -100%; }
+            50% { left: 0; }
         }
 
         .hero-content {
@@ -71,126 +129,279 @@
             max-width: 900px;
             animation: fadeInUp 1.2s ease-out;
             
-            /* Полупрозрачная плашка под текст */
-            background: rgba(10, 14, 39, 0.65); /* Темно-синий, 65% прозрачности */
-            backdrop-filter: blur(10px);        /* Эффект размытия фона (стекло) */
-            padding: 3rem 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(212, 175, 55, 0.2); /* Тонкая золотая рамка */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            /* Стили плашки с текстом */
+            background: rgba(10, 14, 39, 0.7); 
+            backdrop-filter: blur(8px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         }
 
         .hero h1 {
-            font-size: 4.5rem; margin-bottom: 1rem; letter-spacing: 3px;
-            font-weight: 700; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); color: #d4af37;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            color: #d4af37;
         }
+
         .hero .subtitle {
-            font-size: 1.5rem; margin-bottom: 2rem; color: #f0d587;
-            font-weight: 400; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #f0d587;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
+
         .hero p {
-            font-size: 1.2rem; max-width: 700px; margin: 0 auto;
-            color: #e8e5d9; line-height: 1.8;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #e8e5d9;
+            line-height: 1.8;
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* SECTIONS */
-        section { padding: 120px 0; position: relative; }
-        section:nth-child(even) { background: linear-gradient(135deg, rgba(22, 33, 62, 0.5) 0%, rgba(15, 52, 96, 0.3) 100%); }
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(135deg, rgba(22, 33, 62, 0.5) 0%, rgba(15, 52, 96, 0.3) 100%);
+        }
+
         .section-title {
-            font-size: 3.5rem; text-align: center; margin-bottom: 3rem;
-            color: #d4af37; position: relative;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #d4af37;
+            position: relative;
         }
+
         .section-title::after {
-            content: ''; display: block; width: 120px; height: 4px;
-            background: linear-gradient(90deg, #d4af37 0%, transparent 100%); margin: 1.5rem auto 0;
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37 0%, transparent 100%);
+            margin: 1.5rem auto 0;
         }
-        .text-content { max-width: 900px; margin: 0 auto; text-align: center; }
-        .text-content p { font-size: 1.15rem; margin-bottom: 2rem; line-height: 1.9; color: #e8e5d9; }
+
+        .text-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .text-content p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            color: #e8e5d9;
+        }
 
         /* GALLERY */
         .gallery-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 2.5rem; margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
+
         .gallery-item {
-            position: relative; overflow: hidden; border-radius: 15px;
-            height: 450px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 450px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
         }
+
         .gallery-item img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.5s ease, filter 0.5s ease; filter: brightness(0.8);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.8);
         }
-        .gallery-item:hover img { transform: scale(1.08); filter: brightness(1); }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1);
+        }
+
         .gallery-overlay {
-            position: absolute; bottom: 0; left: 0; right: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
-            padding: 2.5rem; color: white; transform: translateY(30px); transition: transform 0.3s ease;
+            padding: 2.5rem;
+            color: white;
+            transform: translateY(30px);
+            transition: transform 0.3s ease;
         }
-        .gallery-item:hover .gallery-overlay { transform: translateY(0); }
-        .gallery-overlay h3 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #d4af37; }
-        .gallery-overlay p { font-size: 0.95rem; color: #e8e5d9; }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #d4af37;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.95rem;
+            color: #e8e5d9;
+        }
 
         /* FEATURES (LOGOS) */
         .features-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem; margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
+
         .feature-card {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
-            padding: 2.5rem; border-radius: 15px; text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.3s ease;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
+
         .feature-card:hover {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.1) 100%);
-            transform: translateY(-10px); border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.4);
             box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
         }
+
         .feature-icon {
-            display: flex; justify-content: center; align-items: center;
-            margin-bottom: 1.5rem; height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            height: 80px;
         }
-        /* Стили для SVG иконок */
-        .feature-icon svg {
-            width: 70px; height: 70px;
-            fill: #d4af37; /* Золотой цвет */
-            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
+
+        .feature-icon img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            /* Золотой фильтр для иконок */
+            filter: invert(83%) sepia(31%) saturate(979%) hue-rotate(359deg) brightness(92%) contrast(89%);
         }
-        .feature-card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: #d4af37; }
-        .feature-card p { color: #e8e5d9; font-size: 0.95rem; line-height: 1.7; }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #d4af37;
+        }
+
+        .feature-card p {
+            color: #e8e5d9;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
 
         /* CONTACTS */
         .contacts-section {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(22, 33, 62, 0.5) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 20px;
-            padding: 4rem; text-align: center; max-width: 700px; margin: 0 auto;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
         }
-        .contacts-section p { font-size: 1.15rem; margin-bottom: 1.5rem; color: #e8e5d9; }
-        .contact-item { margin: 1.5rem 0; font-size: 1.1rem; }
-        .contact-item strong { color: #d4af37; }
+
+        .contacts-section p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            color: #e8e5d9;
+        }
+
+        .contact-item {
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-item strong {
+            color: #d4af37;
+        }
 
         /* FOOTER */
         footer {
             background: linear-gradient(135deg, #0a0e27 0%, #16213e 100%);
-            padding: 3rem 0; text-align: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 4rem;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 4rem;
         }
-        footer p { color: #e8e5d9; }
+
+        footer p {
+            color: #e8e5d9;
+        }
 
         /* RESPONSIVE */
         @media (max-width: 1024px) {
             .hero h1 { font-size: 3rem; }
+            .hero .subtitle { font-size: 1.2rem; }
             .section-title { font-size: 2.5rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 1.5rem; font-size: 0.85rem; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
         }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.1rem; }
             .nav-links { display: none; }
+            .section-title { font-size: 2.2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .contacts-section { padding: 2rem; }
             .hero-content { padding: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 1rem 0; }
+            .logo { font-size: 1.4rem; letter-spacing: 1px; }
+            .nav-links { display: none; }
+            .hero { height: 70vh; margin-top: 50px; }
+            .hero h1 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1rem; }
+            .hero p { font-size: 0.95rem; }
+            .section-title { font-size: 1.8rem; }
+            .section-title::after { width: 80px; }
+            .gallery-item { height: 350px; }
+            .text-content p { font-size: 1rem; }
+            .feature-card { padding: 1.5rem; }
+            .feature-icon img { width: 60px; height: 60px; }
+            .feature-card h3 { font-size: 1.1rem; }
+            .feature-card p { font-size: 0.85rem; }
+            .contacts-section { padding: 1.5rem; }
+            .contact-item { font-size: 0.95rem; }
+            section { padding: 60px 0; }
         }
     </style>
 </head>
@@ -223,6 +434,7 @@
             <div class="text-content">
                 <p><strong>Балтийск (54°39' северной широты)</strong> — самая западная точка России, расположенная на той же географической широте, что и легендарная долина Мозель в Германии, где производят одни из самых утонченных белых вин в мире.</p>
                 <p>Климат Калининградской области в исторических параметрах соответствует климату Шампани <strong>середины XX века</strong> — эпохе классического стиля: свежести, деликатности и минеральности.</p>
+                <p>Балтийское море дарует нам <strong>прохладные ночи</strong>, продлевая период созревания ягод. Климатические циклоны формируют уникальный микроклимат. <strong>Это не тропический шум винодельни, а симфония северных широт.</strong></p>
             </div>
         </div>
     </section>
@@ -232,14 +444,14 @@
             <h2 class="section-title">БУДУЩЕЕ ПРОЕКТА</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/600x450.png?text=Винодельня" alt="Винодельня">
+                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/2b805ad2-e94d-44fe-b5ec-5d823b23f66d.png" onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80'" alt="Винодельня">
                     <div class="gallery-overlay">
                         <h3>Винодельня в балтийском климате</h3>
                         <p>Прусский стиль архитектуры, вид на залив сквозь туман</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/600x450.png?text=Эко-кластер" alt="Эко-кластер">
+                    <img src="./Балтийский терруар _ Премиум винодельня Калининграда_files/79eb8fce-6b7c-4ddc-aaaa-51b82ee1ead8.png" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80'" alt="Эко-кластер">
                     <div class="gallery-overlay">
                         <h3>Эко-туристический кластер</h3>
                         <p>Отель и лоджи в стиле Балтики с видом на виноградники</p>
@@ -255,25 +467,26 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C12.55 2 13 2.45 13 3V5.2C14.6 5.61 15.9 6.64 16.64 8.11L18.5 7.5C18.72 7.42 18.96 7.5 19.11 7.68C19.26 7.87 19.27 8.13 19.12 8.32L17.83 10H20C20.55 10 21 10.45 21 11V13C21 13.55 20.55 14 20 14H18V16C18 16.55 17.55 17 17 17H16V19C16 20.1 15.1 21 14 21H10C8.9 21 8 20.1 8 19V17H7C6.45 17 6 16.55 6 16V14H4C3.45 14 3 13.55 3 13V11C3 10.45 3.45 10 4 10H6.17L4.88 8.32C4.73 8.13 4.74 7.87 4.89 7.68C5.04 7.5 5.28 7.42 5.5 7.5L7.36 8.11C8.1 6.64 9.4 5.61 11 5.2V3C11 2.45 11.45 2 12 2M12 7C10.9 7 10 7.9 10 9S10.9 11 12 11 14 10.1 14 9 13.1 7 12 7Z"/></svg>
+                        <img src="https://cdn-icons-png.flaticon.com/512/765/765616.png" alt="Виноград">
                     </div>
                     <h3>Виноградники</h3>
                     <p>Рислинг, Пино Гри, Мюллер-Тургау для белых вин; Пино Нуар, Цвайгельт для красных</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><path d="M3 3H21V5H3V3M3 7H21V9H3V7M3 11H21V13H3V11M3 15H21V17H3V15M3 19H21V21H3V19Z"/></svg>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3055/3055680.png" alt="Погреба">
                     </div>
                     <h3>Погреба</h3>
                     <p>Вырезаны в янтарных слоях побережья. Традиционные методы винификации</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                         <svg viewBox="0 0 24 24"><path d="M19,7H11V1H19M13,9H17V11H13M13,13H17V15H13M3,3H9V21H3M5,5H7V7H5M5,9H7V11H5M5,13H7V15H5M5,17H7V19H5M9,7H11V9H9M11,13H9V11H11M11,17H9V15H11M11,21H9V19H11M13,17H17V21H13V17Z"/></svg>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965675.png" alt="Гостевой комплекс">
                     </div>
                     <h3>Гостевой комплекс</h3>
                     <p>Люкс-номера с видом на Балтику. Дегустационные залы в стиле château</p>
                 </div>
+
             </div>
         </div>
     </section>
@@ -283,6 +496,7 @@
             <h2 class="section-title">ДЛЯ ИНВЕСТОРОВ</h2>
             <div class="contacts-section">
                 <p>Мы приглашаем вас создать новую главу в истории российского виноделия.</p>
+                <p><strong>Инвестируйте в наследие, которое будет вкушаться поколениями.</strong></p>
                 <div class="contact-item">
                     <strong>📧 Email:</strong><br>
                     <a href="mailto:zinovievilya@gmail.com" style="color: #d4af37; text-decoration: none;">zinovievilya@gmail.com</a>
